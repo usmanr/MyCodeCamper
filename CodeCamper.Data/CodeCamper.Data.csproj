@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{86DC9357-4A2F-4DF0-AD0A-2A7E28085C32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeCamper.Data</RootNamespace>
+    <AssemblyName>CodeCamper.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NLipsum.Core">
+      <HintPath>..\libs\nlipsum\NLipsum.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttendanceRepository.cs" />
+    <Compile Include="CodeCamperDbContext.cs" />
+    <Compile Include="CodeCamperUow.cs" />
+    <Compile Include="Configuration\AttendanceConfiguration.cs" />
+    <Compile Include="Configuration\SessionConfiguration.cs" />
+    <Compile Include="EFRepository.cs" />
+    <Compile Include="Helpers\IRepositoryProvider.cs" />
+    <Compile Include="Helpers\PredicateBuilder.cs" />
+    <Compile Include="Helpers\RepositoryFactories.cs" />
+    <Compile Include="Helpers\RepositoryProvider.cs" />
+    <Compile Include="PersonsRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleData\CodeCamperDatabaseInitializer.cs" />
+    <Compile Include="SampleData\PeopleNames.cs" />
+    <Compile Include="SampleData\RandomSelector.cs" />
+    <Compile Include="SampleData\SampleTextGenerator.cs" />
+    <Compile Include="SampleData\SampleTrack.cs" />
+    <Compile Include="SampleData\TagsGenerator.cs" />
+    <Compile Include="SampleData\TheChosen.cs" />
+    <Compile Include="SessionsRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeCamper.Data.Contracts\CodeCamper.Data.Contracts.csproj">
+      <Project>{fc9a5aae-37d7-4666-b34e-124e647ca28a}</Project>
+      <Name>CodeCamper.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeCamper.Model\CodeCamper.Model.csproj">
+      <Project>{33b4eb3a-1b6f-4fb0-928e-2c10916406cc}</Project>
+      <Name>CodeCamper.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FakesAssemblies\NLipsum.Core.Fakes.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
